@@ -54,14 +54,42 @@ function whoFollowsWho(){
       obj[followerName].followers.push(names);
     }
   }
-  console.log(obj);
+  return obj;
 }
 
-whoFollowsWho();
 
 //Identify who follows the most people
 
+function followsMost(){
+  let info = whoFollowsWho();
+  let numPplFollowing = info['Alice'].follows.length;
+  let numPplFollowingName = 'Alice';
+  for(let name in info){
+    if(info[name].follows.length > numPplFollowing){
+     numPplFollowing = info[name].follows.length;
+     numPplFollowingName = name;
+    }
+  }
+  return numPplFollowingName;
+}
+
+console.log(followsMost() + " follows the most people.");
+
 // Identify who has the most followers
+function mostFollowers(){
+  let info = whoFollowsWho();
+  let numFollowers = info['Alice'].follows.length;
+  let nameOfList = 'Alice';
+  for(let name in info){
+    if(info[name].follows.length > numFollowers){
+     numFollowers = info[name].follows.length;
+     nameOfList = name;
+    } 
+  }
+  return nameOfList;
+}
+
+console.log(mostFollowers() + " has the most followers");
 
 // Identify who has the most followers over 30
 
